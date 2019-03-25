@@ -1,7 +1,8 @@
 # meraki-naemon
 
-Python3 Script for pulling Meraki device info into Nagios & Nagios-derived monitoring systemsusage: meraki_api.py [-h] -k API_KEY -d {switch,ap} -t
-                     {license,uplink,port,latency,ssid,failconn,connassoc,connauth,conndhcp,conndns,connsucc,clients}
+Python3 Script for pulling Meraki device info into Nagios & Nagios-derived monitoring systems
+
+usage: meraki_api.py [-h] -k API_KEY -d {switch,ap} -t {license,uplink,port,latency,ssid,failconn,connassoc,connauth,conndhcp,conndns,connsucc,clients}
                      [-o ORGID] [-n NETWORKID] [-s SERIAL] [-w SSID] [-p PORT]
 
 Information from Meraki Dashboard API (https://api.meraki.com/api/v0). For full documentation on the Meraki Dashboard API please see:
