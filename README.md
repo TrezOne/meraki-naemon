@@ -54,7 +54,7 @@ Information from Meraki Dashboard API (https://api.meraki.com/api/v0). For full 
                         API Call (retrieve stats for all switch ports): GET /devices/<serial number>/switchPorts
 
 
--=EXPLANATION & USAGE=-
+**EXPLANATION & USAGE**
                         
     I. All devices
         license: Expiration of Meraki device license
