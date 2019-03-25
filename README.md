@@ -9,7 +9,8 @@ Information from Meraki Dashboard API (https://api.meraki.com/api/v0). For full 
 - https://dashboard.meraki.com/api_docs
 - https://documenter.getpostman.com/view/897512/meraki-dashboard-api/2To9xm
 
-required arguments:
+**Required Arguments**:
+
   -k API_KEY, --api-key API_KEY
                         API key obtained from Meraki Dashboard admin account
                         
@@ -20,29 +21,30 @@ required arguments:
                         
 -=EXPLANATION & USAGE=-
                         
-        I. All devices
-            license: Expiration of Meraki device license
-            	-t license -o <organization id>
-            uplink:	Status of Meraki device connection to the cloud
-            	-t uplink -n <network id> -s <serial number>
+    I. All devices
+        license: Expiration of Meraki device license
+        	-t license -o <organization id>
+        uplink:	Status of Meraki device connection to the cloud
+        	-t uplink -n <network id> -s <serial number>
 
-        II. Switch Options
-            port: Get status on an individual switchport
-            	-t port -s <serial number> -p <port number>
+    II. Switch Options
+        port: Get status on an individual switchport
+        	-t port -s <serial number> -p <port number>
 
-        III. AP Options
-            latency: Latency stats over the past hour per AP
-            	-t latency -n <network id> -s <serial>
-            ssid: Status of configured SSID(s)	
-            	-t ssid -n <network id> -w <#>
-            failconn: Number of failed connections over the past hour
-            	-t failconn -n <network id>
-            connassoc, connauth, conndhcp, conndns, connsucc: Connection stats per AP over the past hour at different stages
-                -t [connassoc, connauth, conndhcp, conndns, connsucc] -n <network id> -s <serial number>
-            clients: Number of connected clients per AP within the past 2 hours
+    III. AP Options
+        latency: Latency stats over the past hour per AP
+        	-t latency -n <network id> -s <serial>
+        ssid: Status of configured SSID(s)	
+        	-t ssid -n <network id> -w <#>
+        failconn: Number of failed connections over the past hour
+        	-t failconn -n <network id>
+        connassoc, connauth, conndhcp, conndns, connsucc: Connection stats per AP over the past hour at different stages
+            -t [connassoc, connauth, conndhcp, conndns, connsucc] -n <network id> -s <serial number>
+        clients: Number of connected clients per AP within the past 2 hours
                 -t clients -s <serial number>
 
-supplemental arguments:
+**Supplemental arguments**:
+
   -o ORGID, --orgid ORGID
                         Organization ID
                         API Call (retrieve orgid[s]): GET /organizations
