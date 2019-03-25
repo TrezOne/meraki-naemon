@@ -46,20 +46,31 @@ Information from Meraki Dashboard API (https://api.meraki.com/api/v0). For full 
 **Supplemental arguments**:
 
   -o ORGID, --orgid ORGID
+  
                         Organization ID
+                        
                         API Call (retrieve orgid[s]): GET /organizations
                         
   -n NETWORKID, --networkid NETWORKID
+  
                         Network ID
+                        
                         API Call (retrieve network id[s]): GET /organizations/<organization ID>/networks
                         
   -s SERIAL, --serial SERIAL
+  
                         Meraki Device Serial Number, e.g., ABCD-1234-EF56
+                        
                         API Call (retrieve serial number[s]): GET /networks/<network id>/devices
                         
-  -w SSID, --ssid SSID  
+  -w SSID, --ssid SSID
+  
                         Specify the SSID by integer, e.g., 0
+                        
                         API Call (retrieve SSID number[s]): GET /networks/<network id>/ssids
                         
-  -p PORT, --port PORT  Switch port number
+  -p PORT, --port PORT  
+  
+                        Switch port number
+                        
                         API Call (retrieve stats for all switch ports): GET /devices/<serial number>/switchPorts
