@@ -12,9 +12,11 @@ Information from Meraki Dashboard API (https://api.meraki.com/api/v0). For full 
 **Required Arguments**:
 
   -k API_KEY, --api-key API_KEY
+  
                         API key obtained from Meraki Dashboard admin account
                         
   -d {switch,ap}, --device {switch,ap}
+  
                         Device type to be queried (Wireless AP or Switch)
                         
   -t {license,uplink,port,latency,ssid,failconn,connassoc,connauth,conndhcp,conndns,connsucc,clients}, --type {license,uplink,port,latency,ssid,failconn,connassoc,connauth,conndhcp,conndns,connsucc,clients}
