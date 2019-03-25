@@ -20,30 +20,6 @@ Information from Meraki Dashboard API (https://api.meraki.com/api/v0). For full 
                         Device type to be queried (Wireless AP or Switch)
                         
   -t {license,uplink,port,latency,ssid,failconn,connassoc,connauth,conndhcp,conndns,connsucc,clients}, --type {license,uplink,port,latency,ssid,failconn,connassoc,connauth,conndhcp,conndns,connsucc,clients}
-                        
--=EXPLANATION & USAGE=-
-                        
-    I. All devices
-        license: Expiration of Meraki device license
-        	-t license -o <organization id>
-        uplink:	Status of Meraki device connection to the cloud
-        	-t uplink -n <network id> -s <serial number>
-
-    II. Switch Options
-        port: Get status on an individual switchport
-        	-t port -s <serial number> -p <port number>
-
-    III. AP Options
-        latency: Latency stats over the past hour per AP
-        	-t latency -n <network id> -s <serial>
-        ssid: Status of configured SSID(s)	
-        	-t ssid -n <network id> -w <#>
-        failconn: Number of failed connections over the past hour
-        	-t failconn -n <network id>
-        connassoc, connauth, conndhcp, conndns, connsucc: Connection stats per AP over the past hour at different stages
-            -t [connassoc, connauth, conndhcp, conndns, connsucc] -n <network id> -s <serial number>
-        clients: Number of connected clients per AP within the past 2 hours
-                -t clients -s <serial number>
 
 **Supplemental arguments**:
 
@@ -76,3 +52,29 @@ Information from Meraki Dashboard API (https://api.meraki.com/api/v0). For full 
                         Switch port number
                         
                         API Call (retrieve stats for all switch ports): GET /devices/<serial number>/switchPorts
+
+
+-=EXPLANATION & USAGE=-
+                        
+    I. All devices
+        license: Expiration of Meraki device license
+        	-t license -o <organization id>
+        uplink:	Status of Meraki device connection to the cloud
+        	-t uplink -n <network id> -s <serial number>
+
+    II. Switch Options
+        port: Get status on an individual switchport
+        	-t port -s <serial number> -p <port number>
+
+    III. AP Options
+        latency: Latency stats over the past hour per AP
+        	-t latency -n <network id> -s <serial>
+        ssid: Status of configured SSID(s)	
+        	-t ssid -n <network id> -w <#>
+        failconn: Number of failed connections over the past hour
+        	-t failconn -n <network id>
+        connassoc, connauth, conndhcp, conndns, connsucc: Connection stats per AP over the past hour at different stages
+            -t [connassoc, connauth, conndhcp, conndns, connsucc] -n <network id> -s <serial number>
+        clients: Number of connected clients per AP within the past 2 hours
+                -t clients -s <serial number>
+
