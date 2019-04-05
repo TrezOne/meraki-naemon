@@ -170,13 +170,13 @@ def connectionassoc(args):
         print("Unable to connect to Meraki Dashboard API.")
         exit(3) 
     c_assoc = conn_info['connectionStats']['assoc']
-    if c_assoc < args.warning:
+    if c_assoc < 5:
         print("OK: Associations in the past hour: " + str(c_assoc) + " | " + "conn_assoc=" + str(c_assoc) + ";5;10;;")
         exit(0)
-    elif c_assoc >= args.warning:
+    elif c_assoc >= 5:
         print("WARNING: Associations in the past hour: " + str(c_assoc) + " | " + "conn_assoc=" + str(c_assoc) + ";5;10;;")
         exit(1)
-    elif c_assoc >= args.critical:
+    elif c_assoc >= 10:
         print("CRITICAL: Associations in the past hour: " + str(c_assoc) + " | " + "conn_assoc=" + str(c_assoc) + ";5;10;;")
         exit(2)
 
@@ -191,13 +191,13 @@ def connectionauth(args):
         print("Unable to connect to Meraki Dashboard API.")
         exit(3) 
     c_auth = conn_info['connectionStats']['auth']
-    if c_auth < args.warning:
+    if c_auth < 10:
         print("OK: Authentications in the past hour: " + str(c_auth) + " | " + "conn_auth=" + str(c_auth) + ";10;20;;")
         exit(0)
-    elif c_auth >= args.warning:
+    elif c_auth >= 10:
         print("WARNING: Authentications in the past hour: " + str(c_auth) + " | " + "conn_auth=" + str(c_auth) + ";10;20;;")
         exit(1)
-    elif c_auth >= args.critical:
+    elif c_auth >= 20:
         print("CRITICAL: Authentications in the past hour: " + str(c_auth) + " | " + "conn_auth=" + str(c_auth) + ";10;20;;")
         exit(2)
 
@@ -212,13 +212,13 @@ def connectiondhcp(args):
         print("Unable to connect to Meraki Dashboard API.")
         exit(3) 
     c_dhcp = conn_info['connectionStats']['dhcp']
-    if c_dhcp < args.warning:
+    if c_dhcp < 10:
         print("OK: DHCP Requests in the past hour: " + str(c_dhcp) + " | " + "conn_dhcp=" + str(c_dhcp) + ";10;20;;")
         exit(0)
-    elif c_dhcp >= args.warning:
+    elif c_dhcp >= 10:
         print("WARNING: DHCP Requests in the past hour: " + str(c_dhcp) + " | " + "conn_dhcp=" + str(c_dhcp) + ";10;20;;")
         exit(1)
-    elif c_dhcp >= args.critical:
+    elif c_dhcp >= 20:
         print("CRITICAL: DHCP Requests in the past hour: " + str(c_dhcp) + " | " + "conn_dhcp=" + str(c_dhcp) + ";10;20;;")
         exit(2)
 
@@ -233,13 +233,13 @@ def connectiondns(args):
         print("Unable to connect to Meraki Dashboard API.")
         exit(3) 
     c_dns = conn_info['connectionStats']['dns']
-    if c_dns < args.warning:
+    if c_dns < 10:
         print("OK: DNS Queries in the past hour: " + str(c_dns) + " | " + "conn_dns=" + str(c_dns) + ";10;20;;")
         exit(0)
-    elif c_dns >= args.warning:
+    elif c_dns >= 10:
         print("WARNING: DNS Queries in the past hour: " + str(c_dns) + " | " + "conn_dns=" + str(c_dns) + ";10;20;;")
         exit(1)
-    elif c_dns >= args.critical:
+    elif c_dns >= 20:
         print("CRITICAL: DNS Queries in the past hour: " + str(c_dns) + " | " + "conn_dns=" + str(c_dns) + ";10;20;;")
         exit(2)
 
@@ -279,9 +279,9 @@ def failedconnections(args):
     print("Number of failed connections in the past hour: " + str(len(fail_api)) + "\n" + "\n".join(fail_clients) + " | " + "fail_conn=" + str(len(fail_api)) + ";15;25;;")
     if len(fail_api) >= 0:
         exit(0)
-    elif len(fail_api) >= args.warning:
+    elif len(fail_api) >= 10:
         exit(1)
-    elif len(fail_api) >= args.critical:
+    elif len(fail_api) >= 20:
         exit(2)
 
 def clients(args):
