@@ -15,7 +15,7 @@ requiredNamed = parser.add_argument_group('required arguments')
 optionalNamed = parser.add_argument_group('supplemental arguments')
 requiredNamed.add_argument('-k', '--api-key', required=True, help='''API key obtained from Meraki Dashboard admin account''')
 requiredNamed.add_argument('-d', '--device', choices=['switch', 'ap'], required=True, help='''Device type to be queried (Wireless AP or Switch)''')
-requiredNamed.add_argument('-t', '--type', choices=['license', 'uplink', 'port', 'latency', 'ssid', 'failconn', 'connassoc', 'connauth', 'conndhcp', 'conndns', 'connsucc', 'clients'], required=True, help='''
+requiredNamed.add_argument('-t', '--type', choices=['license', 'uplink', 'port', 'poe', 'latency', 'ssid', 'failconn', 'connassoc', 'connauth', 'conndhcp', 'conndns', 'connsucc', 'clients'], required=True, help='''
 -=EXPLANATION & USAGE=-
 
 I. All devices
@@ -25,7 +25,9 @@ uplink:	Status of Meraki device connection to the cloud
 	-t uplink -n <network id> -s <serial number>
 
 II. Switch Options
-port: Get status on an individual switchport
+port: Get status on an individual switchport (Enabled/Disabled)
+	-t port -s <serial number> -p <port number>
+poe: Get POE status on an individual switchport (Enabled/Disabled)
 	-t port -s <serial number> -p <port number>
 
 III. AP Options
@@ -116,6 +118,22 @@ def portstat(args): # To be completed once switch ships in
     except:
         print("Unable to connect to Meraki Dashboard API.")
         exit(3)
+    port_enabled = (port_info['enabled'])
+    if port_enabled == 'True':
+        print("enabled: " + str(port_enabled))
+        exit(0)
+    elif port_enabled == 'False':
+        print("disabled: " + str(port_enabled))
+        exit(2)
+
+def poeport(args): # To be completed once switch ships in
+    "Returns the status of an individual port on a switch"
+    httpreq = merapi_url + "/devices/" + str(args.serial) + "/switchPorts/" + str(args.port)
+    try:
+        port_info = requests.get(httpreq, headers=headers).json()
+    except:
+        print("Unable to connect to Meraki Dashboard API.")
+        exit(3)
     port_poeEnabled = (port_info['poeEnabled'])
     if port_poeEnabled == 'True':
         print("enabled: " + str(port_poeEnabled))
@@ -123,14 +141,7 @@ def portstat(args): # To be completed once switch ships in
     elif port_poeEnabled == 'False':
         print("disabled: " + str(port_poeEnabled))
         exit(2)
-    port_enabled = (port_info['enabled'])
-    if port_enabled == 'True':
-        print("enabled: " + str(port_poeEnabled))
-        exit(0)
-    elif port_enabled == 'False':
-        print("disabled: " + str(port_poeEnabled))
-        exit(2)
-    print(port_info)
+
 def ssidstatus(args):
     "Retrieves configured SSID status (enabled or not)"
     httpreq = merapi_url + "/networks/" + str(args.networkid) + "/ssids/" + str(args.ssid)
@@ -326,6 +337,8 @@ if args.device == 'switch':
         uplinkstatus(args)
     elif args.type == 'port':
         portstat(args)
+    elif args.type == 'poe':
+        poeport(args)
 elif args.device == 'ap':
     if args.type == 'license':
         licensestate(args)
