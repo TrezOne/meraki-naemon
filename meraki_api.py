@@ -115,8 +115,22 @@ def portstat(args): # To be completed once switch ships in
         port_info = requests.get(httpreq, headers=headers).json()
     except:
         print("Unable to connect to Meraki Dashboard API.")
-        exit(3) 
-
+        exit(3)
+    port_poeEnabled = (port_info['poeEnabled'])
+    if port_poeEnabled == 'True':
+        print("enabled: " + str(port_poeEnabled))
+        exit(0)
+    elif port_poeEnabled == 'False':
+        print("disabled: " + str(port_poeEnabled))
+        exit(2)
+    port_enabled = (port_info['enabled'])
+    if port_enabled == 'True':
+        print("enabled: " + str(port_poeEnabled))
+        exit(0)
+    elif port_enabled == 'False':
+        print("disabled: " + str(port_poeEnabled))
+        exit(2)
+    print(port_info)
 def ssidstatus(args):
     "Retrieves configured SSID status (enabled or not)"
     httpreq = merapi_url + "/networks/" + str(args.networkid) + "/ssids/" + str(args.ssid)
