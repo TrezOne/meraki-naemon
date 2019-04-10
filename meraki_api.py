@@ -28,7 +28,7 @@ II. Switch Options
 port: Get status on an individual switchport (Enabled/Disabled)
 	-t port -s <serial number> -p <port number>
 poe: Get POE status on an individual switchport (Enabled/Disabled)
-	-t port -s <serial number> -p <port number>
+	-t poe -s <serial number> -p <port number>
 
 III. AP Options
 latency: Latency stats over the past hour per AP
